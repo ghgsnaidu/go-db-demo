@@ -16,6 +16,7 @@ WORKDIR /go/src/github.com/ghgsnaidu/go-db-demo
 COPY . .
 RUN go mod tidy
 WORKDIR /go/src/github.com/ghgsnaidu/go-db-demo/cmd/main
+ENV DBURL="root:root@tcp(172.17.0.2:3306)/mydb"
 # Build the Go app
 RUN go build   -o app
 #-o ./go-db-demo/cmd/main
@@ -23,6 +24,6 @@ RUN go build   -o app
 
 # This container exposes port 8080 to the outside world
 
-
+EXPOSE 3000
 # Run the binary program produced by `go install`
 CMD ["./app"]

@@ -1,4 +1,4 @@
-package controllers
+package user_controllers
 
 import (
 	"encoding/json"
@@ -7,8 +7,8 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/ghgsnaidu/go-db-demo/pkg/dbconfig"
 	"github.com/ghgsnaidu/go-db-demo/pkg/models"
+	"github.com/ghgsnaidu/go-db-demo/pkg/services"
 	"github.com/gorilla/mux"
 )
 
@@ -17,7 +17,7 @@ var (
 )
 
 func GetAllUsers(w http.ResponseWriter, r *http.Request) {
-	users := dbconfig.GetUsers()
+	users := services.GetUsers()
 	n := len(users)
 	for i := 0; i < n; i++ {
 		writeToResponse(w, users[i])
@@ -31,7 +31,7 @@ func GetUserById(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("error while parsing ID")
 		return
 	}
-	user, suc := dbconfig.GetUser(id)
+	user, suc := services.GetUser(id)
 	if !suc {
 		w.WriteHeader(http.StatusNoContent)
 		fmt.Println("id not found in data-base")
@@ -57,7 +57,7 @@ func PostUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if !dbconfig.AddUser(id, user) {
+	if !services.AddUser(id, user) {
 		fmt.Println("cannot insert into data-base")
 	}
 }
