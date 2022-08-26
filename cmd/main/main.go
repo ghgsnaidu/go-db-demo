@@ -30,7 +30,7 @@ func main() {
 	http.Handle("/", router)
 
 	fmt.Println("server starting......")
-	err := http.ListenAndServe("localhost:3000", router)
+	err := http.ListenAndServe(":3000", router)
 	if err != nil {
 		fmt.Println("error starting server...")
 		return
