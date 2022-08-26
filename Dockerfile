@@ -22,7 +22,7 @@ RUN go build   -o app
 #-o ./go-db-demo/cmd/main
 
 
-# This container exposes port 8080 to the outside world
+# This container exposes port 3000 to the outside world
 
 EXPOSE 3000
 # Run the binary program produced by `go install`
