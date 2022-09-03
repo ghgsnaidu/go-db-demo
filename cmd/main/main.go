@@ -17,6 +17,8 @@ func main() {
 	//wire.Build(dbconfig.NewConfig, dbconfig.InitDB, services.InitServices)
 	//getting db configurations
 
+	fmt.Println("........router created")
+
 	config := dbconfig.NewConfig()
 
 	//opening db connc by injecting config and getting db instance
