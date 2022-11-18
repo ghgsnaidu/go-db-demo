@@ -18,7 +18,7 @@ func main() {
 	//getting db configurations
 
 	fmt.Println("........router created")
-
+	fmt.Println("added test log message")
 	config := dbconfig.NewConfig()
 
 	//opening db connc by injecting config and getting db instance
